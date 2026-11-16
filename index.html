@@ -32,6 +32,20 @@ a{color:var(--blue)}
 .links a{color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 18px;text-decoration:none;font-weight:600}
 .hero h1 .accent{color:var(--green)}
 footer{margin-top:48px;color:var(--muted);font-size:14px}
+form{display:grid;gap:14px;margin-top:8px}
+label{display:grid;gap:6px;font-weight:600;font-size:15px}
+label .hint{font-weight:400;color:var(--muted);font-size:14px}
+input,select,textarea{font:inherit;font-size:17px;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px;min-height:48px;width:100%}
+textarea{min-height:140px;resize:vertical}
+select{-webkit-appearance:none;appearance:none;padding-right:44px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239AA1AB' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.status:empty{display:none}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+button.button{border:0;cursor:pointer;font:inherit;font-weight:600;font-size:17px}
+button.button[disabled]{opacity:.6;cursor:default}
+.status{min-height:24px;font-weight:600}
+.status.ok{color:var(--green)}
+.status.err{color:#FF6961}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 html.js [data-lang]{display:none}
 html.js [data-lang].on{display:block}
 </style>
@@ -61,25 +75,26 @@ document.documentElement.classList.add('js');
 <section data-lang="en" lang="en" class="hero">
 <h1>Find the right doorbell <span class="accent">in seconds</span></h1>
 <p class="muted">Point the camera at a doorbell panel and Klinger Scan highlights the name from your parcel. Up to 5 names at once, offline and without an account.</p>
-<div class="links"><a href="privacy">Privacy Policy</a><a href="support">Support</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a></div>
+<div class="links"><a href="privacy">Privacy Policy</a><a href="terms">Terms of Use</a><a href="support">Support</a></div>
 </section><section data-lang="de" lang="de" class="hero">
 <h1>Die richtige Klingel <span class="accent">in Sekunden</span></h1>
 <p class="muted">Kamera aufs Klingelschild halten – Klinger Scan markiert den Namen vom Paket. Bis zu 5 Namen auf einmal, offline und ohne Konto.</p>
-<div class="links"><a href="privacy">Datenschutzerklärung</a><a href="support">Support</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Nutzungsbedingungen</a></div>
+<div class="links"><a href="privacy">Datenschutzerklärung</a><a href="terms">Nutzungsbedingungen</a><a href="support">Support</a></div>
 </section><section data-lang="ro" lang="ro" class="hero">
 <h1>Soneria potrivită în <span class="accent">câteva secunde</span></h1>
 <p class="muted">Îndreaptă camera spre interfon și Klinger Scan evidențiază numele de pe colet. Până la 5 nume deodată, offline și fără cont.</p>
-<div class="links"><a href="privacy">Politica de confidențialitate</a><a href="support">Asistență</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Termeni de utilizare</a></div>
+<div class="links"><a href="privacy">Politica de confidențialitate</a><a href="terms">Termeni de utilizare</a><a href="support">Asistență</a></div>
 </section><section data-lang="uk" lang="uk" class="hero">
 <h1>Потрібний дзвінок <span class="accent">за секунди</span></h1>
 <p class="muted">Наведіть камеру на панель дзвінків – Klinger Scan підсвітить ім’я з посилки. До 5 імен одночасно, офлайн і без акаунта.</p>
-<div class="links"><a href="privacy">Політика конфіденційності</a><a href="support">Підтримка</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Умови використання</a></div>
+<div class="links"><a href="privacy">Політика конфіденційності</a><a href="terms">Умови використання</a><a href="support">Підтримка</a></div>
 </section><section data-lang="ru" lang="ru" class="hero">
 <h1>Нужный звонок <span class="accent">за секунды</span></h1>
 <p class="muted">Наведите камеру на панель звонков – Klinger Scan подсветит имя с посылки. До 5 имён одновременно, офлайн и без аккаунта.</p>
-<div class="links"><a href="privacy">Политика конфиденциальности</a><a href="support">Поддержка</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Условия использования</a></div>
+<div class="links"><a href="privacy">Политика конфиденциальности</a><a href="terms">Условия использования</a><a href="support">Поддержка</a></div>
 </section>
 <footer>© 2026 Klinger Scan</footer>
 </div>
+
 </body>
 </html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klinger Scan – Terms of Use</title>
+<meta name="description" content="By using Klinger Scan you agree to these terms. Apple’s Standard Licensed Application End User License Agreement also applies.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+:root{--bg:#0C0F13;--surface:#171B21;--line:rgba(255,255,255,.09);--text:#F5F5F2;--muted:#9AA1AB;--green:#30D158;--blue:#0A84FF;color-scheme:dark}
+@media (prefers-color-scheme: light){:root{--bg:#F6F7F8;--surface:#FFFFFF;--line:rgba(0,0,0,.08);--text:#111418;--muted:#5D646E;--green:#1F9E43;--blue:#0A6BD6;color-scheme:light}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:32px 16px 64px}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header a.brand{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;font-weight:700;font-size:19px;margin-right:auto}
+.icon{width:44px;height:44px;border-radius:11px;display:block;flex:none}
+nav.langs{display:flex;gap:6px;flex-wrap:wrap}
+nav.langs button{font:inherit;font-size:14px;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;min-height:36px;cursor:pointer}
+nav.langs button[aria-pressed="true"]{color:#fff;background:var(--blue);border-color:var(--blue)}
+h1{font-size:clamp(30px,6vw,40px);line-height:1.12;letter-spacing:-.6px;margin:40px 0 8px}
+h2{font-size:20px;margin:32px 0 8px}
+p{margin:8px 0}
+.muted{color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 22px;margin:20px 0}
+ul{padding-left:20px;margin:8px 0}
+li{margin:6px 0}
+a{color:var(--blue)}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;background:var(--blue);color:#fff;font-weight:600;text-decoration:none}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.links a{color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 18px;text-decoration:none;font-weight:600}
+.hero h1 .accent{color:var(--green)}
+footer{margin-top:48px;color:var(--muted);font-size:14px}
+form{display:grid;gap:14px;margin-top:8px}
+label{display:grid;gap:6px;font-weight:600;font-size:15px}
+label .hint{font-weight:400;color:var(--muted);font-size:14px}
+input,select,textarea{font:inherit;font-size:17px;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px;min-height:48px;width:100%}
+textarea{min-height:140px;resize:vertical}
+select{-webkit-appearance:none;appearance:none;padding-right:44px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239AA1AB' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.status:empty{display:none}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+button.button{border:0;cursor:pointer;font:inherit;font-weight:600;font-size:17px}
+button.button[disabled]{opacity:.6;cursor:default}
+.status{min-height:24px;font-weight:600}
+.status.ok{color:var(--green)}
+.status.err{color:#FF6961}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+html.js [data-lang]{display:none}
+html.js [data-lang].on{display:block}
+</style>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var codes=["en", "de", "ro", "uk", "ru"], saved=null;
+  try{saved=localStorage.getItem('lang')}catch(e){}
+  var want=saved||((navigator.language||'en').slice(0,2).toLowerCase());
+  if(codes.indexOf(want)<0)want='en';
+  function show(code){
+    document.querySelectorAll('[data-lang]').forEach(function(el){el.classList.toggle('on',el.getAttribute('data-lang')===code)});
+    document.querySelectorAll('nav.langs button').forEach(function(b){b.setAttribute('aria-pressed',b.value===code?'true':'false')});
+    document.documentElement.lang=code;
+    try{localStorage.setItem('lang',code)}catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('nav.langs button').forEach(function(b){b.addEventListener('click',function(){show(b.value)})});
+    show(want);
+  });
+})();
+</script>
+</head>
+<body>
+<div class="wrap">
+<header><a class="brand" href="./"><svg class="icon" role="img" aria-label="Klinger Scan" viewBox="0 0 512 512"><rect width="512" height="512" fill="#111418"></rect><rect x="64" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><path d="M330 326 L426 422" fill="none" stroke="#F5F5F2" stroke-width="46" stroke-linecap="round"></path><circle cx="232" cy="228" r="128" fill="#1B2027" stroke="#F5F5F2" stroke-width="26"></circle><rect x="142" y="186" width="180" height="84" rx="22" fill="#30D158"></rect><rect x="168" y="214" width="104" height="28" rx="14" fill="#04210D"></rect></svg><span>Klinger Scan</span></a><nav class="langs" aria-label="Language"><button type="button" value="en" aria-pressed="false">English</button><button type="button" value="de" aria-pressed="false">Deutsch</button><button type="button" value="ro" aria-pressed="false">Română</button><button type="button" value="uk" aria-pressed="false">Українська</button><button type="button" value="ru" aria-pressed="false">Русский</button></nav></header>
+<section data-lang="en" lang="en">
+<h1>Terms of Use</h1>
+<p class="muted">Last updated: 16.11.2026</p>
+<div class="card"><p>By using Klinger Scan you agree to these terms. Apple’s Standard Licensed Application End User License Agreement also applies.</p><p><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple Standard EULA</a></p></div>
+<h2>What the app does</h2><p>Klinger Scan helps you find names on doorbell panels and parcel labels. It is an aid: always check the name and address yourself before you ring or hand over a parcel.</p><h2>No guarantee</h2><p>Text recognition can make mistakes, for example with dirty, faded or unusual name plates. The app is provided “as is”, without a guarantee that it always finds the right name.</p><h2>Liability</h2><p>To the extent permitted by law, we are not liable for wrong deliveries, delays or other damage resulting from use of the app.</p><h2>Purchases</h2><p>If paid features such as Pro are offered, they are bought through the App Store. Payment, renewal and cancellation are handled by Apple. You can manage or cancel subscriptions in your Apple ID settings.</p><h2>Fair use</h2><p>Use the app only to find recipients for your deliveries and respect other people’s privacy.</p><h2>Changes</h2><p>We may update these terms. The current version is always on this page.</p><h2>Contact</h2><p>Questions? Write to us on the Support page.</p>
+<div class="links"><a href="./">Home</a><a href="privacy">Privacy Policy</a><a href="support">Support</a></div>
+</section><section data-lang="de" lang="de">
+<h1>Nutzungsbedingungen</h1>
+<p class="muted">Zuletzt aktualisiert: 16.11.2026</p>
+<div class="card"><p>Mit der Nutzung von Klinger Scan stimmst du diesen Bedingungen zu. Zusätzlich gilt die Standard-Endbenutzer-Lizenzvereinbarung (EULA) von Apple.</p><p><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple-Standard-EULA</a></p></div>
+<h2>Was die App macht</h2><p>Klinger Scan hilft dir, Namen auf Klingelschildern und Paketetiketten zu finden. Sie ist ein Hilfsmittel: Prüfe Name und Adresse immer selbst, bevor du klingelst oder ein Paket übergibst.</p><h2>Keine Garantie</h2><p>Die Texterkennung kann Fehler machen, z. B. bei verschmutzten, verblassten oder ungewöhnlichen Schildern. Die App wird „wie besehen“ bereitgestellt, ohne Garantie, dass sie immer den richtigen Namen findet.</p><h2>Haftung</h2><p>Soweit gesetzlich zulässig, haften wir nicht für Fehlzustellungen, Verzögerungen oder andere Schäden durch die Nutzung der App.</p><h2>Käufe</h2><p>Werden kostenpflichtige Funktionen wie Pro angeboten, kaufst du sie über den App Store. Zahlung, Verlängerung und Kündigung wickelt Apple ab. Abos verwaltest oder kündigst du in den Einstellungen deiner Apple-ID.</p><h2>Faire Nutzung</h2><p>Nutze die App nur, um Empfänger deiner Zustellungen zu finden, und respektiere die Privatsphäre anderer.</p><h2>Änderungen</h2><p>Wir können diese Bedingungen aktualisieren. Die aktuelle Fassung steht immer auf dieser Seite.</p><h2>Kontakt</h2><p>Fragen? Schreib uns über die Support-Seite.</p>
+<div class="links"><a href="./">Start</a><a href="privacy">Datenschutzerklärung</a><a href="support">Support</a></div>
+</section><section data-lang="ro" lang="ro">
+<h1>Termeni de utilizare</h1>
+<p class="muted">Ultima actualizare: 16.11.2026</p>
+<div class="card"><p>Folosind Klinger Scan, ești de acord cu acești termeni. Se aplică și Acordul de licență standard pentru utilizatorul final (EULA) al Apple.</p><p><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">EULA standard Apple</a></p></div>
+<h2>Ce face aplicația</h2><p>Klinger Scan te ajută să găsești nume pe interfoane și pe etichetele coletelor. Este un ajutor: verifică întotdeauna singur numele și adresa înainte să suni sau să predai un colet.</p><h2>Fără garanție</h2><p>Recunoașterea textului poate greși, de exemplu la plăcuțe murdare, șterse sau neobișnuite. Aplicația este oferită „ca atare”, fără garanția că găsește mereu numele corect.</p><h2>Răspundere</h2><p>În măsura permisă de lege, nu răspundem pentru livrări greșite, întârzieri sau alte daune rezultate din folosirea aplicației.</p><h2>Achiziții</h2><p>Dacă sunt oferite funcții plătite, precum Pro, le cumperi prin App Store. Plata, reînnoirea și anularea sunt gestionate de Apple. Abonamentele se gestionează sau se anulează din setările ID-ului Apple.</p><h2>Utilizare corectă</h2><p>Folosește aplicația doar pentru a găsi destinatarii livrărilor tale și respectă intimitatea celorlalți.</p><h2>Modificări</h2><p>Putem actualiza acești termeni. Versiunea curentă este mereu pe această pagină.</p><h2>Contact</h2><p>Întrebări? Scrie-ne pe pagina de asistență.</p>
+<div class="links"><a href="./">Acasă</a><a href="privacy">Politica de confidențialitate</a><a href="support">Asistență</a></div>
+</section><section data-lang="uk" lang="uk">
+<h1>Умови використання</h1>
+<p class="muted">Оновлено: 16.11.2026</p>
+<div class="card"><p>Користуючись Klinger Scan, ви погоджуєтеся з цими умовами. Також діє стандартна ліцензійна угода Apple з кінцевим користувачем (EULA).</p><p><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Стандартна EULA Apple</a></p></div>
+<h2>Що робить застосунок</h2><p>Klinger Scan допомагає знаходити імена на панелях дзвінків і наклейках посилок. Це помічник: завжди самі перевіряйте ім’я та адресу, перш ніж дзвонити чи віддавати посилку.</p><h2>Без гарантій</h2><p>Розпізнавання тексту може помилятися, наприклад на брудних, вицвілих або незвичних табличках. Застосунок надається «як є», без гарантії, що він завжди знайде правильне ім’я.</p><h2>Відповідальність</h2><p>У межах, дозволених законом, ми не відповідаємо за помилкові доставки, затримки чи інші збитки від використання застосунку.</p><h2>Покупки</h2><p>Якщо з’являться платні функції, як-от Pro, їх купують через App Store. Оплату, продовження і скасування обробляє Apple. Керувати підписками чи скасувати їх можна в налаштуваннях Apple ID.</p><h2>Чесне використання</h2><p>Використовуйте застосунок лише для пошуку одержувачів своїх доставок і поважайте приватність інших.</p><h2>Зміни</h2><p>Ми можемо оновлювати ці умови. Актуальна версія завжди на цій сторінці.</p><h2>Контакт</h2><p>Питання? Напишіть нам на сторінці підтримки.</p>
+<div class="links"><a href="./">Головна</a><a href="privacy">Політика конфіденційності</a><a href="support">Підтримка</a></div>
+</section><section data-lang="ru" lang="ru">
+<h1>Условия использования</h1>
+<p class="muted">Обновлено: 16.11.2026</p>
+<div class="card"><p>Пользуясь Klinger Scan, вы соглашаетесь с этими условиями. Также действует стандартное лицензионное соглашение Apple с конечным пользователем (EULA).</p><p><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Стандартная EULA Apple</a></p></div>
+<h2>Что делает приложение</h2><p>Klinger Scan помогает находить имена на панелях звонков и наклейках посылок. Это помощник: всегда сами проверяйте имя и адрес, прежде чем звонить или отдавать посылку.</p><h2>Без гарантий</h2><p>Распознавание текста может ошибаться, например на грязных, выцветших или необычных табличках. Приложение предоставляется «как есть», без гарантии, что оно всегда найдёт правильное имя.</p><h2>Ответственность</h2><p>В пределах, разрешённых законом, мы не несём ответственности за ошибочные доставки, задержки или иной ущерб от использования приложения.</p><h2>Покупки</h2><p>Если появятся платные функции, например Pro, они покупаются через App Store. Оплату, продление и отмену обрабатывает Apple. Управлять подписками или отменить их можно в настройках Apple ID.</p><h2>Честное использование</h2><p>Используйте приложение только для поиска получателей своих доставок и уважайте приватность других людей.</p><h2>Изменения</h2><p>Мы можем обновлять эти условия. Актуальная версия всегда на этой странице.</p><h2>Контакт</h2><p>Вопросы? Напишите нам на странице поддержки.</p>
+<div class="links"><a href="./">Главная</a><a href="privacy">Политика конфиденциальности</a><a href="support">Поддержка</a></div>
+</section>
+<footer>© 2026 Klinger Scan</footer>
+</div>
+
+</body>
+</html>

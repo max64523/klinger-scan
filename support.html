@@ -32,6 +32,20 @@ a{color:var(--blue)}
 .links a{color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 18px;text-decoration:none;font-weight:600}
 .hero h1 .accent{color:var(--green)}
 footer{margin-top:48px;color:var(--muted);font-size:14px}
+form{display:grid;gap:14px;margin-top:8px}
+label{display:grid;gap:6px;font-weight:600;font-size:15px}
+label .hint{font-weight:400;color:var(--muted);font-size:14px}
+input,select,textarea{font:inherit;font-size:17px;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px;min-height:48px;width:100%}
+textarea{min-height:140px;resize:vertical}
+select{-webkit-appearance:none;appearance:none;padding-right:44px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239AA1AB' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.status:empty{display:none}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+button.button{border:0;cursor:pointer;font:inherit;font-weight:600;font-size:17px}
+button.button[disabled]{opacity:.6;cursor:default}
+.status{min-height:24px;font-weight:600}
+.status.ok{color:var(--green)}
+.status.err{color:#FF6961}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 html.js [data-lang]{display:none}
 html.js [data-lang].on{display:block}
 </style>
@@ -60,31 +74,125 @@ document.documentElement.classList.add('js');
 <header><a class="brand" href="./"><svg class="icon" role="img" aria-label="Klinger Scan" viewBox="0 0 512 512"><rect width="512" height="512" fill="#111418"></rect><rect x="64" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><path d="M330 326 L426 422" fill="none" stroke="#F5F5F2" stroke-width="46" stroke-linecap="round"></path><circle cx="232" cy="228" r="128" fill="#1B2027" stroke="#F5F5F2" stroke-width="26"></circle><rect x="142" y="186" width="180" height="84" rx="22" fill="#30D158"></rect><rect x="168" y="214" width="104" height="28" rx="14" fill="#04210D"></rect></svg><span>Klinger Scan</span></a><nav class="langs" aria-label="Language"><button type="button" value="en" aria-pressed="false">English</button><button type="button" value="de" aria-pressed="false">Deutsch</button><button type="button" value="ro" aria-pressed="false">Română</button><button type="button" value="uk" aria-pressed="false">Українська</button><button type="button" value="ru" aria-pressed="false">Русский</button></nav></header>
 <section data-lang="en" lang="en">
 <h1>Support</h1>
-<div class="card"><p>Something not working or an idea for the app? We read every message.</p><p><a class="button" href="https://github.com/max64523/klinger-scan/issues/new">Report a problem or send feedback</a></p><p class="muted">Opens a form on GitHub (free account needed).</p></div>
+<div class="card">
+<p>Something not working or an idea for the app? We read every message.</p>
+<form class="support" data-ok="Thanks! Your message has been sent. We’ll reply by email." data-err="Couldn’t send. Check your connection and try again." data-sending="Sending…">
+<input type="hidden" name="_subject" value="Klinger Scan – Support (en)">
+<input type="hidden" name="language" value="en">
+<input type="hidden" name="_template" value="table">
+<div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+<label>Your email<span class="hint">So we can reply</span><input type="email" name="email" required autocomplete="email"></label>
+<label>Name (optional)<input type="text" name="name" autocomplete="name"></label>
+<label>Topic<select name="topic"><option>Problem</option><option>Idea</option><option>Question</option><option>Other</option></select></label>
+<label>Message<textarea name="message" required></textarea></label>
+<button class="button" type="submit">Send</button>
+<p class="status" role="status" aria-live="polite"></p>
+<p class="muted">We use your email only to answer you.</p>
+</form>
+</div>
 <h2>The name is not found</h2><p>Hold the phone steady 20–40 cm from the panel and turn on the flashlight in the dark. Check which word you picked for the doorbell – usually only the surname is on it.</p><h2>What do green and orange mean?</h2><p>Green is an exact match. Orange (dashed) is a similar spelling – worth a second look, e.g. “Kaja” instead of “Kaya”.</p><h2>Where did my list go?</h2><p>For privacy, names are deleted automatically after 24 hours.</p><h2>Does it work without internet?</h2><p>Yes. Recognition runs on the phone, so it works in stairwells and basements without signal.</p><h2>How do I change the language?</h2><p>Settings → Language. The app supports English, Deutsch, Română, Українська and Русский.</p>
-<div class="links"><a href="./">Home</a><a href="privacy">Privacy Policy</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a></div>
+<div class="links"><a href="./">Home</a><a href="privacy">Privacy Policy</a><a href="terms">Terms of Use</a></div>
 </section><section data-lang="de" lang="de">
 <h1>Support</h1>
-<div class="card"><p>Funktioniert etwas nicht oder hast du eine Idee? Wir lesen jede Nachricht.</p><p><a class="button" href="https://github.com/max64523/klinger-scan/issues/new">Problem melden oder Feedback senden</a></p><p class="muted">Öffnet ein Formular auf GitHub (kostenloses Konto nötig).</p></div>
+<div class="card">
+<p>Funktioniert etwas nicht oder hast du eine Idee? Wir lesen jede Nachricht.</p>
+<form class="support" data-ok="Danke! Deine Nachricht wurde gesendet. Wir antworten per E-Mail." data-err="Senden fehlgeschlagen. Prüfe die Verbindung und versuche es erneut." data-sending="Wird gesendet…">
+<input type="hidden" name="_subject" value="Klinger Scan – Support (de)">
+<input type="hidden" name="language" value="de">
+<input type="hidden" name="_template" value="table">
+<div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+<label>Deine E-Mail<span class="hint">Damit wir antworten können</span><input type="email" name="email" required autocomplete="email"></label>
+<label>Name (optional)<input type="text" name="name" autocomplete="name"></label>
+<label>Thema<select name="topic"><option>Problem</option><option>Idee</option><option>Frage</option><option>Sonstiges</option></select></label>
+<label>Nachricht<textarea name="message" required></textarea></label>
+<button class="button" type="submit">Senden</button>
+<p class="status" role="status" aria-live="polite"></p>
+<p class="muted">Wir nutzen deine E-Mail nur, um dir zu antworten.</p>
+</form>
+</div>
 <h2>Der Name wird nicht gefunden</h2><p>Handy ruhig 20–40 cm vor das Klingelschild halten, im Dunkeln die Taschenlampe einschalten. Prüfe, welches Wort du für die Klingel gewählt hast – meist steht nur der Nachname dran.</p><h2>Was bedeuten Grün und Orange?</h2><p>Grün ist ein genauer Treffer. Orange (gestrichelt) ist eine ähnliche Schreibweise – lieber zweimal hinsehen, z. B. „Kaja“ statt „Kaya“.</p><h2>Wo ist meine Liste?</h2><p>Zum Schutz deiner Daten werden Namen nach 24 Stunden automatisch gelöscht.</p><h2>Funktioniert es ohne Internet?</h2><p>Ja. Die Erkennung läuft auf dem Handy, also auch im Treppenhaus oder Keller ohne Empfang.</p><h2>Wie ändere ich die Sprache?</h2><p>Einstellungen → Sprache. Die App gibt es auf English, Deutsch, Română, Українська und Русский.</p>
-<div class="links"><a href="./">Start</a><a href="privacy">Datenschutzerklärung</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Nutzungsbedingungen</a></div>
+<div class="links"><a href="./">Start</a><a href="privacy">Datenschutzerklärung</a><a href="terms">Nutzungsbedingungen</a></div>
 </section><section data-lang="ro" lang="ro">
 <h1>Asistență</h1>
-<div class="card"><p>Ceva nu merge sau ai o idee pentru aplicație? Citim fiecare mesaj.</p><p><a class="button" href="https://github.com/max64523/klinger-scan/issues/new">Raportează o problemă sau trimite feedback</a></p><p class="muted">Deschide un formular pe GitHub (e nevoie de un cont gratuit).</p></div>
+<div class="card">
+<p>Ceva nu merge sau ai o idee pentru aplicație? Citim fiecare mesaj.</p>
+<form class="support" data-ok="Mulțumim! Mesajul a fost trimis. Îți răspundem pe e-mail." data-err="Nu s-a putut trimite. Verifică conexiunea și încearcă din nou." data-sending="Se trimite…">
+<input type="hidden" name="_subject" value="Klinger Scan – Support (ro)">
+<input type="hidden" name="language" value="ro">
+<input type="hidden" name="_template" value="table">
+<div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+<label>E-mailul tău<span class="hint">Ca să-ți putem răspunde</span><input type="email" name="email" required autocomplete="email"></label>
+<label>Nume (opțional)<input type="text" name="name" autocomplete="name"></label>
+<label>Subiect<select name="topic"><option>Problemă</option><option>Idee</option><option>Întrebare</option><option>Altceva</option></select></label>
+<label>Mesaj<textarea name="message" required></textarea></label>
+<button class="button" type="submit">Trimite</button>
+<p class="status" role="status" aria-live="polite"></p>
+<p class="muted">Folosim e-mailul tău doar pentru a-ți răspunde.</p>
+</form>
+</div>
 <h2>Numele nu este găsit</h2><p>Ține telefonul nemișcat la 20–40 cm de panou și aprinde lanterna pe întuneric. Verifică ce cuvânt ai ales pentru sonerie – de obicei e doar numele de familie.</p><h2>Ce înseamnă verde și portocaliu?</h2><p>Verde este o potrivire exactă. Portocaliu (punctat) este o scriere asemănătoare – merită verificat, de ex. „Kaja” în loc de „Kaya”.</p><h2>Unde a dispărut lista?</h2><p>Pentru confidențialitate, numele se șterg automat după 24 de ore.</p><h2>Funcționează fără internet?</h2><p>Da. Recunoașterea rulează pe telefon, deci merge și pe scări sau în subsol, fără semnal.</p><h2>Cum schimb limba?</h2><p>Setări → Limbă. Aplicația este disponibilă în English, Deutsch, Română, Українська și Русский.</p>
-<div class="links"><a href="./">Acasă</a><a href="privacy">Politica de confidențialitate</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Termeni de utilizare</a></div>
+<div class="links"><a href="./">Acasă</a><a href="privacy">Politica de confidențialitate</a><a href="terms">Termeni de utilizare</a></div>
 </section><section data-lang="uk" lang="uk">
 <h1>Підтримка</h1>
-<div class="card"><p>Щось не працює або є ідея для застосунку? Ми читаємо кожне повідомлення.</p><p><a class="button" href="https://github.com/max64523/klinger-scan/issues/new">Повідомити про проблему або надіслати відгук</a></p><p class="muted">Відкриває форму на GitHub (потрібен безкоштовний акаунт).</p></div>
+<div class="card">
+<p>Щось не працює або є ідея для застосунку? Ми читаємо кожне повідомлення.</p>
+<form class="support" data-ok="Дякуємо! Повідомлення надіслано. Відповімо на email." data-err="Не вдалося надіслати. Перевірте з’єднання і спробуйте ще раз." data-sending="Надсилаємо…">
+<input type="hidden" name="_subject" value="Klinger Scan – Support (uk)">
+<input type="hidden" name="language" value="uk">
+<input type="hidden" name="_template" value="table">
+<div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+<label>Ваш email<span class="hint">Щоб ми могли відповісти</span><input type="email" name="email" required autocomplete="email"></label>
+<label>Ім’я (необов’язково)<input type="text" name="name" autocomplete="name"></label>
+<label>Тема<select name="topic"><option>Проблема</option><option>Ідея</option><option>Питання</option><option>Інше</option></select></label>
+<label>Повідомлення<textarea name="message" required></textarea></label>
+<button class="button" type="submit">Надіслати</button>
+<p class="status" role="status" aria-live="polite"></p>
+<p class="muted">Ваш email використовується лише для відповіді.</p>
+</form>
+</div>
 <h2>Ім’я не знаходиться</h2><p>Тримайте телефон нерухомо на відстані 20–40 см від панелі, у темряві ввімкніть ліхтарик. Перевірте, яке слово ви обрали для дзвінка – зазвичай там лише прізвище.</p><h2>Що означають зелений і помаранчевий?</h2><p>Зелений – точний збіг. Помаранчевий (пунктир) – схоже написання, варто перевірити, наприклад «Kaja» замість «Kaya».</p><h2>Куди зник мій список?</h2><p>Для приватності імена автоматично видаляються через 24 години.</p><h2>Чи працює без інтернету?</h2><p>Так. Розпізнавання працює на телефоні, тож і в під’їзді чи підвалі без зв’язку.</p><h2>Як змінити мову?</h2><p>Налаштування → Мова. Застосунок доступний англійською, німецькою, румунською, українською і російською.</p>
-<div class="links"><a href="./">Головна</a><a href="privacy">Політика конфіденційності</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Умови використання</a></div>
+<div class="links"><a href="./">Головна</a><a href="privacy">Політика конфіденційності</a><a href="terms">Умови використання</a></div>
 </section><section data-lang="ru" lang="ru">
 <h1>Поддержка</h1>
-<div class="card"><p>Что-то не работает или есть идея для приложения? Мы читаем каждое сообщение.</p><p><a class="button" href="https://github.com/max64523/klinger-scan/issues/new">Сообщить о проблеме или отправить отзыв</a></p><p class="muted">Откроется форма на GitHub (нужен бесплатный аккаунт).</p></div>
+<div class="card">
+<p>Что-то не работает или есть идея для приложения? Мы читаем каждое сообщение.</p>
+<form class="support" data-ok="Спасибо! Сообщение отправлено. Ответим на email." data-err="Не удалось отправить. Проверьте соединение и попробуйте ещё раз." data-sending="Отправляем…">
+<input type="hidden" name="_subject" value="Klinger Scan – Support (ru)">
+<input type="hidden" name="language" value="ru">
+<input type="hidden" name="_template" value="table">
+<div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+<label>Ваш email<span class="hint">Чтобы мы могли ответить</span><input type="email" name="email" required autocomplete="email"></label>
+<label>Имя (необязательно)<input type="text" name="name" autocomplete="name"></label>
+<label>Тема<select name="topic"><option>Проблема</option><option>Идея</option><option>Вопрос</option><option>Другое</option></select></label>
+<label>Сообщение<textarea name="message" required></textarea></label>
+<button class="button" type="submit">Отправить</button>
+<p class="status" role="status" aria-live="polite"></p>
+<p class="muted">Ваш email используется только для ответа.</p>
+</form>
+</div>
 <h2>Имя не находится</h2><p>Держите телефон неподвижно в 20–40 см от панели, в темноте включите фонарик. Проверьте, какое слово вы выбрали для звонка – обычно там только фамилия.</p><h2>Что значат зелёный и оранжевый?</h2><p>Зелёный – точное совпадение. Оранжевый (пунктир) – похожее написание, стоит проверить, например «Kaja» вместо «Kaya».</p><h2>Куда пропал мой список?</h2><p>Для приватности имена автоматически удаляются через 24 часа.</p><h2>Работает без интернета?</h2><p>Да. Распознавание работает на телефоне, поэтому и в подъезде или подвале без связи.</p><h2>Как сменить язык?</h2><p>Настройки → Язык. Приложение доступно на английском, немецком, румынском, украинском и русском.</p>
-<div class="links"><a href="./">Главная</a><a href="privacy">Политика конфиденциальности</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Условия использования</a></div>
+<div class="links"><a href="./">Главная</a><a href="privacy">Политика конфиденциальности</a><a href="terms">Условия использования</a></div>
 </section>
 <footer>© 2026 Klinger Scan</footer>
 </div>
+<script>
+document.querySelectorAll('form.support').forEach(function(form){
+  var status=form.querySelector('.status'), button=form.querySelector('button[type=submit]'), label=button.textContent;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form._honey && form._honey.value) return;
+    var data={};
+    new FormData(form).forEach(function(v,k){data[k]=v});
+    data._replyto=data.email;
+    button.disabled=true; button.textContent=form.dataset.sending;
+    status.className='status'; status.textContent='';
+    fetch('https://formsubmit.co/ajax/cernicukmaks00@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)!=='true')throw new Error(j.message||r.status);})})
+      .then(function(){status.className='status ok';status.textContent=form.dataset.ok;form.reset();})
+      .catch(function(){status.className='status err';status.textContent=form.dataset.err;})
+      .finally(function(){button.disabled=false;button.textContent=label;});
+  });
+});
+</script>
 </body>
 </html>
