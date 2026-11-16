@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klinger Scan – Privacy Policy</title>
+<meta name="description" content="In short: Klinger Scan does not collect personal data. Everything happens on your iPhone.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+:root{--bg:#0C0F13;--surface:#171B21;--line:rgba(255,255,255,.09);--text:#F5F5F2;--muted:#9AA1AB;--green:#30D158;--blue:#0A84FF;color-scheme:dark}
+@media (prefers-color-scheme: light){:root{--bg:#F6F7F8;--surface:#FFFFFF;--line:rgba(0,0,0,.08);--text:#111418;--muted:#5D646E;--green:#1F9E43;--blue:#0A6BD6;color-scheme:light}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:32px 16px 64px}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header a.brand{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;font-weight:700;font-size:19px;margin-right:auto}
+.icon{width:44px;height:44px;border-radius:11px;display:block;flex:none}
+nav.langs{display:flex;gap:6px;flex-wrap:wrap}
+nav.langs button{font:inherit;font-size:14px;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;min-height:36px;cursor:pointer}
+nav.langs button[aria-pressed="true"]{color:#fff;background:var(--blue);border-color:var(--blue)}
+h1{font-size:clamp(30px,6vw,40px);line-height:1.12;letter-spacing:-.6px;margin:40px 0 8px}
+h2{font-size:20px;margin:32px 0 8px}
+p{margin:8px 0}
+.muted{color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 22px;margin:20px 0}
+ul{padding-left:20px;margin:8px 0}
+li{margin:6px 0}
+a{color:var(--blue)}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;background:var(--blue);color:#fff;font-weight:600;text-decoration:none}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.links a{color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 18px;text-decoration:none;font-weight:600}
+.hero h1 .accent{color:var(--green)}
+footer{margin-top:48px;color:var(--muted);font-size:14px}
+html.js [data-lang]{display:none}
+html.js [data-lang].on{display:block}
+</style>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var codes=["en", "de", "ro", "uk", "ru"], saved=null;
+  try{saved=localStorage.getItem('lang')}catch(e){}
+  var want=saved||((navigator.language||'en').slice(0,2).toLowerCase());
+  if(codes.indexOf(want)<0)want='en';
+  function show(code){
+    document.querySelectorAll('[data-lang]').forEach(function(el){el.classList.toggle('on',el.getAttribute('data-lang')===code)});
+    document.querySelectorAll('nav.langs button').forEach(function(b){b.setAttribute('aria-pressed',b.value===code?'true':'false')});
+    document.documentElement.lang=code;
+    try{localStorage.setItem('lang',code)}catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('nav.langs button').forEach(function(b){b.addEventListener('click',function(){show(b.value)})});
+    show(want);
+  });
+})();
+</script>
+</head>
+<body>
+<div class="wrap">
+<header><a class="brand" href="./"><svg class="icon" role="img" aria-label="Klinger Scan" viewBox="0 0 512 512"><rect width="512" height="512" fill="#111418"></rect><rect x="64" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><path d="M330 326 L426 422" fill="none" stroke="#F5F5F2" stroke-width="46" stroke-linecap="round"></path><circle cx="232" cy="228" r="128" fill="#1B2027" stroke="#F5F5F2" stroke-width="26"></circle><rect x="142" y="186" width="180" height="84" rx="22" fill="#30D158"></rect><rect x="168" y="214" width="104" height="28" rx="14" fill="#04210D"></rect></svg><span>Klinger Scan</span></a><nav class="langs" aria-label="Language"><button type="button" value="en" aria-pressed="false">English</button><button type="button" value="de" aria-pressed="false">Deutsch</button><button type="button" value="ro" aria-pressed="false">Română</button><button type="button" value="uk" aria-pressed="false">Українська</button><button type="button" value="ru" aria-pressed="false">Русский</button></nav></header>
+<section data-lang="en" lang="en">
+<h1>Privacy Policy</h1>
+<p class="muted">Last updated: 16.11.2026</p>
+<div class="card"><p>In short: Klinger Scan does not collect personal data. Everything happens on your iPhone.</p></div>
+<h2>Camera</h2><p>The camera is used only to read text on doorbell panels and parcel labels. Recognition runs entirely on your device. Photos are not saved and are never uploaded.</p><h2>Your name list</h2><p>The names you enter or scan are stored only on your iPhone and are deleted automatically after 24 hours. Your language, theme and colour settings are also stored only on the device.</p><h2>No account, no tracking</h2><p>There is no sign-up, no advertising, no analytics and no tracking. We do not sell or share data.</p><h2>Text recognition library</h2><p>Text recognition uses Google ML Kit, which runs on the device. According to Google, ML Kit may send anonymous usage and performance statistics to Google. Images and recognised text are not sent.</p><h2>Apple</h2><p>Ratings, reviews and sharing use Apple’s built-in system features. Purchases, if offered, are handled by Apple; we never see your payment details.</p><h2>Children</h2><p>The app is not directed at children and collects no data from anyone.</p><h2>Changes and contact</h2><p>If this policy changes, the new version will be published on this page. Questions: see the Support page.</p>
+<div class="links"><a href="./">Home</a><a href="support">Support</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a></div>
+</section><section data-lang="de" lang="de">
+<h1>Datenschutzerklärung</h1>
+<p class="muted">Zuletzt aktualisiert: 16.11.2026</p>
+<div class="card"><p>Kurz gesagt: Klinger Scan erhebt keine personenbezogenen Daten. Alles passiert auf deinem iPhone.</p></div>
+<h2>Kamera</h2><p>Die Kamera wird nur genutzt, um Text auf Klingelschildern und Paketetiketten zu lesen. Die Erkennung läuft vollständig auf deinem Gerät. Fotos werden weder gespeichert noch hochgeladen.</p><h2>Deine Namensliste</h2><p>Eingegebene oder gescannte Namen werden nur auf deinem iPhone gespeichert und nach 24 Stunden automatisch gelöscht. Sprache, Design und Farbe werden ebenfalls nur auf dem Gerät gespeichert.</p><h2>Kein Konto, kein Tracking</h2><p>Keine Anmeldung, keine Werbung, keine Analyse und kein Tracking. Wir verkaufen oder teilen keine Daten.</p><h2>Texterkennung</h2><p>Die Texterkennung nutzt Google ML Kit, das auf dem Gerät läuft. Laut Google kann ML Kit anonyme Nutzungs- und Leistungsstatistiken an Google senden. Bilder und erkannter Text werden nicht gesendet.</p><h2>Apple</h2><p>Bewertungen, Rezensionen und Teilen nutzen die Systemfunktionen von Apple. Käufe, falls angeboten, wickelt Apple ab; wir sehen keine Zahlungsdaten.</p><h2>Kinder</h2><p>Die App richtet sich nicht an Kinder und erhebt von niemandem Daten.</p><h2>Änderungen und Kontakt</h2><p>Ändert sich diese Erklärung, wird die neue Fassung auf dieser Seite veröffentlicht. Fragen: siehe Support-Seite.</p>
+<div class="links"><a href="./">Start</a><a href="support">Support</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Nutzungsbedingungen</a></div>
+</section><section data-lang="ro" lang="ro">
+<h1>Politica de confidențialitate</h1>
+<p class="muted">Ultima actualizare: 16.11.2026</p>
+<div class="card"><p>Pe scurt: Klinger Scan nu colectează date personale. Totul se întâmplă pe iPhone-ul tău.</p></div>
+<h2>Camera</h2><p>Camera este folosită doar pentru a citi textul de pe interfoane și etichetele coletelor. Recunoașterea rulează complet pe dispozitiv. Fotografiile nu sunt salvate și nu sunt încărcate niciodată.</p><h2>Lista ta de nume</h2><p>Numele introduse sau scanate sunt păstrate doar pe iPhone și se șterg automat după 24 de ore. Limba, tema și culoarea sunt păstrate tot doar pe dispozitiv.</p><h2>Fără cont, fără urmărire</h2><p>Fără înregistrare, fără reclame, fără analize și fără urmărire. Nu vindem și nu partajăm date.</p><h2>Recunoașterea textului</h2><p>Recunoașterea textului folosește Google ML Kit, care rulează pe dispozitiv. Potrivit Google, ML Kit poate trimite statistici anonime de utilizare și performanță către Google. Imaginile și textul recunoscut nu sunt trimise.</p><h2>Apple</h2><p>Evaluările, recenziile și partajarea folosesc funcțiile de sistem Apple. Achizițiile, dacă există, sunt gestionate de Apple; nu vedem datele tale de plată.</p><h2>Copii</h2><p>Aplicația nu se adresează copiilor și nu colectează date de la nimeni.</p><h2>Modificări și contact</h2><p>Dacă politica se schimbă, noua versiune va fi publicată pe această pagină. Întrebări: vezi pagina de asistență.</p>
+<div class="links"><a href="./">Acasă</a><a href="support">Asistență</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Termeni de utilizare</a></div>
+</section><section data-lang="uk" lang="uk">
+<h1>Політика конфіденційності</h1>
+<p class="muted">Оновлено: 16.11.2026</p>
+<div class="card"><p>Коротко: Klinger Scan не збирає персональних даних. Усе відбувається на вашому iPhone.</p></div>
+<h2>Камера</h2><p>Камера використовується лише для читання тексту на панелях дзвінків і наклейках посилок. Розпізнавання повністю працює на пристрої. Фото не зберігаються і ніколи не надсилаються.</p><h2>Ваш список імен</h2><p>Імена, які ви вводите або скануєте, зберігаються лише на iPhone і автоматично видаляються через 24 години. Мова, тема й колір також зберігаються лише на пристрої.</p><h2>Без акаунта і стеження</h2><p>Без реєстрації, реклами, аналітики та стеження. Ми не продаємо і не передаємо дані.</p><h2>Розпізнавання тексту</h2><p>Для розпізнавання тексту використовується Google ML Kit, що працює на пристрої. За даними Google, ML Kit може надсилати Google анонімну статистику використання і продуктивності. Зображення і розпізнаний текст не надсилаються.</p><h2>Apple</h2><p>Оцінки, відгуки і функція «Поділитися» працюють через системні функції Apple. Покупки, якщо вони будуть, обробляє Apple; ми не бачимо платіжних даних.</p><h2>Діти</h2><p>Застосунок не призначений для дітей і ні в кого не збирає даних.</p><h2>Зміни і контакт</h2><p>Якщо політика зміниться, нову версію буде опубліковано на цій сторінці. Питання – на сторінці підтримки.</p>
+<div class="links"><a href="./">Головна</a><a href="support">Підтримка</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Умови використання</a></div>
+</section><section data-lang="ru" lang="ru">
+<h1>Политика конфиденциальности</h1>
+<p class="muted">Обновлено: 16.11.2026</p>
+<div class="card"><p>Коротко: Klinger Scan не собирает персональные данные. Всё происходит на вашем iPhone.</p></div>
+<h2>Камера</h2><p>Камера используется только для чтения текста на панелях звонков и наклейках посылок. Распознавание полностью работает на устройстве. Фото не сохраняются и никогда не отправляются.</p><h2>Ваш список имён</h2><p>Имена, которые вы вводите или сканируете, хранятся только на iPhone и автоматически удаляются через 24 часа. Язык, тема и цвет тоже хранятся только на устройстве.</p><h2>Без аккаунта и слежки</h2><p>Без регистрации, рекламы, аналитики и отслеживания. Мы не продаём и не передаём данные.</p><h2>Распознавание текста</h2><p>Для распознавания текста используется Google ML Kit, который работает на устройстве. По данным Google, ML Kit может отправлять в Google анонимную статистику использования и производительности. Изображения и распознанный текст не отправляются.</p><h2>Apple</h2><p>Оценки, отзывы и функция «Поделиться» работают через системные функции Apple. Покупки, если они появятся, обрабатывает Apple; мы не видим платёжные данные.</p><h2>Дети</h2><p>Приложение не предназначено для детей и ни у кого не собирает данные.</p><h2>Изменения и контакт</h2><p>Если политика изменится, новая версия будет опубликована на этой странице. Вопросы – на странице поддержки.</p>
+<div class="links"><a href="./">Главная</a><a href="support">Поддержка</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Условия использования</a></div>
+</section>
+<footer>© 2026 Klinger Scan</footer>
+</div>
+</body>
+</html>

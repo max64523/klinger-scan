@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klinger Scan</title>
+<meta name="description" content="Point the camera at a doorbell panel and Klinger Scan highlights the name from your parcel. Up to 5 names at once, offline and without an account.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+:root{--bg:#0C0F13;--surface:#171B21;--line:rgba(255,255,255,.09);--text:#F5F5F2;--muted:#9AA1AB;--green:#30D158;--blue:#0A84FF;color-scheme:dark}
+@media (prefers-color-scheme: light){:root{--bg:#F6F7F8;--surface:#FFFFFF;--line:rgba(0,0,0,.08);--text:#111418;--muted:#5D646E;--green:#1F9E43;--blue:#0A6BD6;color-scheme:light}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:32px 16px 64px}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header a.brand{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;font-weight:700;font-size:19px;margin-right:auto}
+.icon{width:44px;height:44px;border-radius:11px;display:block;flex:none}
+nav.langs{display:flex;gap:6px;flex-wrap:wrap}
+nav.langs button{font:inherit;font-size:14px;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;min-height:36px;cursor:pointer}
+nav.langs button[aria-pressed="true"]{color:#fff;background:var(--blue);border-color:var(--blue)}
+h1{font-size:clamp(30px,6vw,40px);line-height:1.12;letter-spacing:-.6px;margin:40px 0 8px}
+h2{font-size:20px;margin:32px 0 8px}
+p{margin:8px 0}
+.muted{color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 22px;margin:20px 0}
+ul{padding-left:20px;margin:8px 0}
+li{margin:6px 0}
+a{color:var(--blue)}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;background:var(--blue);color:#fff;font-weight:600;text-decoration:none}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.links a{color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 18px;text-decoration:none;font-weight:600}
+.hero h1 .accent{color:var(--green)}
+footer{margin-top:48px;color:var(--muted);font-size:14px}
+html.js [data-lang]{display:none}
+html.js [data-lang].on{display:block}
+</style>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var codes=["en", "de", "ro", "uk", "ru"], saved=null;
+  try{saved=localStorage.getItem('lang')}catch(e){}
+  var want=saved||((navigator.language||'en').slice(0,2).toLowerCase());
+  if(codes.indexOf(want)<0)want='en';
+  function show(code){
+    document.querySelectorAll('[data-lang]').forEach(function(el){el.classList.toggle('on',el.getAttribute('data-lang')===code)});
+    document.querySelectorAll('nav.langs button').forEach(function(b){b.setAttribute('aria-pressed',b.value===code?'true':'false')});
+    document.documentElement.lang=code;
+    try{localStorage.setItem('lang',code)}catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('nav.langs button').forEach(function(b){b.addEventListener('click',function(){show(b.value)})});
+    show(want);
+  });
+})();
+</script>
+</head>
+<body>
+<div class="wrap">
+<header><a class="brand" href="./"><svg class="icon" role="img" aria-label="Klinger Scan" viewBox="0 0 512 512"><rect width="512" height="512" fill="#111418"></rect><rect x="64" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><path d="M330 326 L426 422" fill="none" stroke="#F5F5F2" stroke-width="46" stroke-linecap="round"></path><circle cx="232" cy="228" r="128" fill="#1B2027" stroke="#F5F5F2" stroke-width="26"></circle><rect x="142" y="186" width="180" height="84" rx="22" fill="#30D158"></rect><rect x="168" y="214" width="104" height="28" rx="14" fill="#04210D"></rect></svg><span>Klinger Scan</span></a><nav class="langs" aria-label="Language"><button type="button" value="en" aria-pressed="false">English</button><button type="button" value="de" aria-pressed="false">Deutsch</button><button type="button" value="ro" aria-pressed="false">Română</button><button type="button" value="uk" aria-pressed="false">Українська</button><button type="button" value="ru" aria-pressed="false">Русский</button></nav></header>
+<section data-lang="en" lang="en" class="hero">
+<h1>Find the right doorbell <span class="accent">in seconds</span></h1>
+<p class="muted">Point the camera at a doorbell panel and Klinger Scan highlights the name from your parcel. Up to 5 names at once, offline and without an account.</p>
+<div class="links"><a href="privacy">Privacy Policy</a><a href="support">Support</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a></div>
+</section><section data-lang="de" lang="de" class="hero">
+<h1>Die richtige Klingel <span class="accent">in Sekunden</span></h1>
+<p class="muted">Kamera aufs Klingelschild halten – Klinger Scan markiert den Namen vom Paket. Bis zu 5 Namen auf einmal, offline und ohne Konto.</p>
+<div class="links"><a href="privacy">Datenschutzerklärung</a><a href="support">Support</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Nutzungsbedingungen</a></div>
+</section><section data-lang="ro" lang="ro" class="hero">
+<h1>Soneria potrivită în <span class="accent">câteva secunde</span></h1>
+<p class="muted">Îndreaptă camera spre interfon și Klinger Scan evidențiază numele de pe colet. Până la 5 nume deodată, offline și fără cont.</p>
+<div class="links"><a href="privacy">Politica de confidențialitate</a><a href="support">Asistență</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Termeni de utilizare</a></div>
+</section><section data-lang="uk" lang="uk" class="hero">
+<h1>Потрібний дзвінок <span class="accent">за секунди</span></h1>
+<p class="muted">Наведіть камеру на панель дзвінків – Klinger Scan підсвітить ім’я з посилки. До 5 імен одночасно, офлайн і без акаунта.</p>
+<div class="links"><a href="privacy">Політика конфіденційності</a><a href="support">Підтримка</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Умови використання</a></div>
+</section><section data-lang="ru" lang="ru" class="hero">
+<h1>Нужный звонок <span class="accent">за секунды</span></h1>
+<p class="muted">Наведите камеру на панель звонков – Klinger Scan подсветит имя с посылки. До 5 имён одновременно, офлайн и без аккаунта.</p>
+<div class="links"><a href="privacy">Политика конфиденциальности</a><a href="support">Поддержка</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Условия использования</a></div>
+</section>
+<footer>© 2026 Klinger Scan</footer>
+</div>
+</body>
+</html>

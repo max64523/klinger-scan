@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klinger Scan – Support</title>
+<meta name="description" content="Something not working or an idea for the app? We read every message.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+:root{--bg:#0C0F13;--surface:#171B21;--line:rgba(255,255,255,.09);--text:#F5F5F2;--muted:#9AA1AB;--green:#30D158;--blue:#0A84FF;color-scheme:dark}
+@media (prefers-color-scheme: light){:root{--bg:#F6F7F8;--surface:#FFFFFF;--line:rgba(0,0,0,.08);--text:#111418;--muted:#5D646E;--green:#1F9E43;--blue:#0A6BD6;color-scheme:light}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:32px 16px 64px}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header a.brand{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;font-weight:700;font-size:19px;margin-right:auto}
+.icon{width:44px;height:44px;border-radius:11px;display:block;flex:none}
+nav.langs{display:flex;gap:6px;flex-wrap:wrap}
+nav.langs button{font:inherit;font-size:14px;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;min-height:36px;cursor:pointer}
+nav.langs button[aria-pressed="true"]{color:#fff;background:var(--blue);border-color:var(--blue)}
+h1{font-size:clamp(30px,6vw,40px);line-height:1.12;letter-spacing:-.6px;margin:40px 0 8px}
+h2{font-size:20px;margin:32px 0 8px}
+p{margin:8px 0}
+.muted{color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 22px;margin:20px 0}
+ul{padding-left:20px;margin:8px 0}
+li{margin:6px 0}
+a{color:var(--blue)}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;background:var(--blue);color:#fff;font-weight:600;text-decoration:none}
+.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.links a{color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 18px;text-decoration:none;font-weight:600}
+.hero h1 .accent{color:var(--green)}
+footer{margin-top:48px;color:var(--muted);font-size:14px}
+html.js [data-lang]{display:none}
+html.js [data-lang].on{display:block}
+</style>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var codes=["en", "de", "ro", "uk", "ru"], saved=null;
+  try{saved=localStorage.getItem('lang')}catch(e){}
+  var want=saved||((navigator.language||'en').slice(0,2).toLowerCase());
+  if(codes.indexOf(want)<0)want='en';
+  function show(code){
+    document.querySelectorAll('[data-lang]').forEach(function(el){el.classList.toggle('on',el.getAttribute('data-lang')===code)});
+    document.querySelectorAll('nav.langs button').forEach(function(b){b.setAttribute('aria-pressed',b.value===code?'true':'false')});
+    document.documentElement.lang=code;
+    try{localStorage.setItem('lang',code)}catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('nav.langs button').forEach(function(b){b.addEventListener('click',function(){show(b.value)})});
+    show(want);
+  });
+})();
+</script>
+</head>
+<body>
+<div class="wrap">
+<header><a class="brand" href="./"><svg class="icon" role="img" aria-label="Klinger Scan" viewBox="0 0 512 512"><rect width="512" height="512" fill="#111418"></rect><rect x="64" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="62" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="146" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="230" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="314" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="64" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="204" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><rect x="344" y="398" width="104" height="54" rx="14" fill="#2B3038"></rect><path d="M330 326 L426 422" fill="none" stroke="#F5F5F2" stroke-width="46" stroke-linecap="round"></path><circle cx="232" cy="228" r="128" fill="#1B2027" stroke="#F5F5F2" stroke-width="26"></circle><rect x="142" y="186" width="180" height="84" rx="22" fill="#30D158"></rect><rect x="168" y="214" width="104" height="28" rx="14" fill="#04210D"></rect></svg><span>Klinger Scan</span></a><nav class="langs" aria-label="Language"><button type="button" value="en" aria-pressed="false">English</button><button type="button" value="de" aria-pressed="false">Deutsch</button><button type="button" value="ro" aria-pressed="false">Română</button><button type="button" value="uk" aria-pressed="false">Українська</button><button type="button" value="ru" aria-pressed="false">Русский</button></nav></header>
+<section data-lang="en" lang="en">
+<h1>Support</h1>
+<div class="card"><p>Something not working or an idea for the app? We read every message.</p><p><a class="button" href="https://github.com/max64523/klinger-scan/issues/new">Report a problem or send feedback</a></p><p class="muted">Opens a form on GitHub (free account needed).</p></div>
+<h2>The name is not found</h2><p>Hold the phone steady 20–40 cm from the panel and turn on the flashlight in the dark. Check which word you picked for the doorbell – usually only the surname is on it.</p><h2>What do green and orange mean?</h2><p>Green is an exact match. Orange (dashed) is a similar spelling – worth a second look, e.g. “Kaja” instead of “Kaya”.</p><h2>Where did my list go?</h2><p>For privacy, names are deleted automatically after 24 hours.</p><h2>Does it work without internet?</h2><p>Yes. Recognition runs on the phone, so it works in stairwells and basements without signal.</p><h2>How do I change the language?</h2><p>Settings → Language. The app supports English, Deutsch, Română, Українська and Русский.</p>
+<div class="links"><a href="./">Home</a><a href="privacy">Privacy Policy</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a></div>
+</section><section data-lang="de" lang="de">
+<h1>Support</h1>
+<div class="card"><p>Funktioniert etwas nicht oder hast du eine Idee? Wir lesen jede Nachricht.</p><p><a class="button" href="https://github.com/max64523/klinger-scan/issues/new">Problem melden oder Feedback senden</a></p><p class="muted">Öffnet ein Formular auf GitHub (kostenloses Konto nötig).</p></div>
+<h2>Der Name wird nicht gefunden</h2><p>Handy ruhig 20–40 cm vor das Klingelschild halten, im Dunkeln die Taschenlampe einschalten. Prüfe, welches Wort du für die Klingel gewählt hast – meist steht nur der Nachname dran.</p><h2>Was bedeuten Grün und Orange?</h2><p>Grün ist ein genauer Treffer. Orange (gestrichelt) ist eine ähnliche Schreibweise – lieber zweimal hinsehen, z. B. „Kaja“ statt „Kaya“.</p><h2>Wo ist meine Liste?</h2><p>Zum Schutz deiner Daten werden Namen nach 24 Stunden automatisch gelöscht.</p><h2>Funktioniert es ohne Internet?</h2><p>Ja. Die Erkennung läuft auf dem Handy, also auch im Treppenhaus oder Keller ohne Empfang.</p><h2>Wie ändere ich die Sprache?</h2><p>Einstellungen → Sprache. Die App gibt es auf English, Deutsch, Română, Українська und Русский.</p>
+<div class="links"><a href="./">Start</a><a href="privacy">Datenschutzerklärung</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Nutzungsbedingungen</a></div>
+</section><section data-lang="ro" lang="ro">
+<h1>Asistență</h1>
+<div class="card"><p>Ceva nu merge sau ai o idee pentru aplicație? Citim fiecare mesaj.</p><p><a class="button" href="https://github.com/max64523/klinger-scan/issues/new">Raportează o problemă sau trimite feedback</a></p><p class="muted">Deschide un formular pe GitHub (e nevoie de un cont gratuit).</p></div>
+<h2>Numele nu este găsit</h2><p>Ține telefonul nemișcat la 20–40 cm de panou și aprinde lanterna pe întuneric. Verifică ce cuvânt ai ales pentru sonerie – de obicei e doar numele de familie.</p><h2>Ce înseamnă verde și portocaliu?</h2><p>Verde este o potrivire exactă. Portocaliu (punctat) este o scriere asemănătoare – merită verificat, de ex. „Kaja” în loc de „Kaya”.</p><h2>Unde a dispărut lista?</h2><p>Pentru confidențialitate, numele se șterg automat după 24 de ore.</p><h2>Funcționează fără internet?</h2><p>Da. Recunoașterea rulează pe telefon, deci merge și pe scări sau în subsol, fără semnal.</p><h2>Cum schimb limba?</h2><p>Setări → Limbă. Aplicația este disponibilă în English, Deutsch, Română, Українська și Русский.</p>
+<div class="links"><a href="./">Acasă</a><a href="privacy">Politica de confidențialitate</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Termeni de utilizare</a></div>
+</section><section data-lang="uk" lang="uk">
+<h1>Підтримка</h1>
+<div class="card"><p>Щось не працює або є ідея для застосунку? Ми читаємо кожне повідомлення.</p><p><a class="button" href="https://github.com/max64523/klinger-scan/issues/new">Повідомити про проблему або надіслати відгук</a></p><p class="muted">Відкриває форму на GitHub (потрібен безкоштовний акаунт).</p></div>
+<h2>Ім’я не знаходиться</h2><p>Тримайте телефон нерухомо на відстані 20–40 см від панелі, у темряві ввімкніть ліхтарик. Перевірте, яке слово ви обрали для дзвінка – зазвичай там лише прізвище.</p><h2>Що означають зелений і помаранчевий?</h2><p>Зелений – точний збіг. Помаранчевий (пунктир) – схоже написання, варто перевірити, наприклад «Kaja» замість «Kaya».</p><h2>Куди зник мій список?</h2><p>Для приватності імена автоматично видаляються через 24 години.</p><h2>Чи працює без інтернету?</h2><p>Так. Розпізнавання працює на телефоні, тож і в під’їзді чи підвалі без зв’язку.</p><h2>Як змінити мову?</h2><p>Налаштування → Мова. Застосунок доступний англійською, німецькою, румунською, українською і російською.</p>
+<div class="links"><a href="./">Головна</a><a href="privacy">Політика конфіденційності</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Умови використання</a></div>
+</section><section data-lang="ru" lang="ru">
+<h1>Поддержка</h1>
+<div class="card"><p>Что-то не работает или есть идея для приложения? Мы читаем каждое сообщение.</p><p><a class="button" href="https://github.com/max64523/klinger-scan/issues/new">Сообщить о проблеме или отправить отзыв</a></p><p class="muted">Откроется форма на GitHub (нужен бесплатный аккаунт).</p></div>
+<h2>Имя не находится</h2><p>Держите телефон неподвижно в 20–40 см от панели, в темноте включите фонарик. Проверьте, какое слово вы выбрали для звонка – обычно там только фамилия.</p><h2>Что значат зелёный и оранжевый?</h2><p>Зелёный – точное совпадение. Оранжевый (пунктир) – похожее написание, стоит проверить, например «Kaja» вместо «Kaya».</p><h2>Куда пропал мой список?</h2><p>Для приватности имена автоматически удаляются через 24 часа.</p><h2>Работает без интернета?</h2><p>Да. Распознавание работает на телефоне, поэтому и в подъезде или подвале без связи.</p><h2>Как сменить язык?</h2><p>Настройки → Язык. Приложение доступно на английском, немецком, румынском, украинском и русском.</p>
+<div class="links"><a href="./">Главная</a><a href="privacy">Политика конфиденциальности</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Условия использования</a></div>
+</section>
+<footer>© 2026 Klinger Scan</footer>
+</div>
+</body>
+</html>
