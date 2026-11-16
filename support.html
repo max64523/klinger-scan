@@ -76,7 +76,7 @@ document.documentElement.classList.add('js');
 <h1>Support</h1>
 <div class="card">
 <p>Something not working or an idea for the app? We read every message.</p>
-<form class="support" data-ok="Thanks! Your message has been sent. We’ll reply by email." data-err="Couldn’t send. Check your connection and try again." data-sending="Sending…">
+<form class="support" data-ok="Thanks! Your message has been sent. We’ll reply by email." data-err="Couldn’t send. Check your connection and try again." data-sending="Sending…" data-wait="You have just sent a message. You can send another in {m} min." data-limit="You have sent 3 messages today. We will reply by email – please try again tomorrow.">
 <input type="hidden" name="_subject" value="Klinger Scan – Support (en)">
 <input type="hidden" name="language" value="en">
 <input type="hidden" name="_template" value="table">
@@ -96,7 +96,7 @@ document.documentElement.classList.add('js');
 <h1>Support</h1>
 <div class="card">
 <p>Funktioniert etwas nicht oder hast du eine Idee? Wir lesen jede Nachricht.</p>
-<form class="support" data-ok="Danke! Deine Nachricht wurde gesendet. Wir antworten per E-Mail." data-err="Senden fehlgeschlagen. Prüfe die Verbindung und versuche es erneut." data-sending="Wird gesendet…">
+<form class="support" data-ok="Danke! Deine Nachricht wurde gesendet. Wir antworten per E-Mail." data-err="Senden fehlgeschlagen. Prüfe die Verbindung und versuche es erneut." data-sending="Wird gesendet…" data-wait="Du hast gerade eine Nachricht gesendet. Die nächste geht in {m} Min." data-limit="Du hast heute schon 3 Nachrichten gesendet. Wir antworten per E-Mail – versuche es morgen wieder.">
 <input type="hidden" name="_subject" value="Klinger Scan – Support (de)">
 <input type="hidden" name="language" value="de">
 <input type="hidden" name="_template" value="table">
@@ -116,7 +116,7 @@ document.documentElement.classList.add('js');
 <h1>Asistență</h1>
 <div class="card">
 <p>Ceva nu merge sau ai o idee pentru aplicație? Citim fiecare mesaj.</p>
-<form class="support" data-ok="Mulțumim! Mesajul a fost trimis. Îți răspundem pe e-mail." data-err="Nu s-a putut trimite. Verifică conexiunea și încearcă din nou." data-sending="Se trimite…">
+<form class="support" data-ok="Mulțumim! Mesajul a fost trimis. Îți răspundem pe e-mail." data-err="Nu s-a putut trimite. Verifică conexiunea și încearcă din nou." data-sending="Se trimite…" data-wait="Tocmai ai trimis un mesaj. Poți trimite altul în {m} min." data-limit="Ai trimis deja 3 mesaje azi. Îți răspundem pe e-mail – încearcă din nou mâine.">
 <input type="hidden" name="_subject" value="Klinger Scan – Support (ro)">
 <input type="hidden" name="language" value="ro">
 <input type="hidden" name="_template" value="table">
@@ -136,7 +136,7 @@ document.documentElement.classList.add('js');
 <h1>Підтримка</h1>
 <div class="card">
 <p>Щось не працює або є ідея для застосунку? Ми читаємо кожне повідомлення.</p>
-<form class="support" data-ok="Дякуємо! Повідомлення надіслано. Відповімо на email." data-err="Не вдалося надіслати. Перевірте з’єднання і спробуйте ще раз." data-sending="Надсилаємо…">
+<form class="support" data-ok="Дякуємо! Повідомлення надіслано. Відповімо на email." data-err="Не вдалося надіслати. Перевірте з’єднання і спробуйте ще раз." data-sending="Надсилаємо…" data-wait="Ви щойно надіслали повідомлення. Наступне можна через {m} хв." data-limit="Ви вже надіслали 3 повідомлення сьогодні. Ми відповімо на email – спробуйте завтра.">
 <input type="hidden" name="_subject" value="Klinger Scan – Support (uk)">
 <input type="hidden" name="language" value="uk">
 <input type="hidden" name="_template" value="table">
@@ -156,7 +156,7 @@ document.documentElement.classList.add('js');
 <h1>Поддержка</h1>
 <div class="card">
 <p>Что-то не работает или есть идея для приложения? Мы читаем каждое сообщение.</p>
-<form class="support" data-ok="Спасибо! Сообщение отправлено. Ответим на email." data-err="Не удалось отправить. Проверьте соединение и попробуйте ещё раз." data-sending="Отправляем…">
+<form class="support" data-ok="Спасибо! Сообщение отправлено. Ответим на email." data-err="Не удалось отправить. Проверьте соединение и попробуйте ещё раз." data-sending="Отправляем…" data-wait="Вы только что отправили сообщение. Следующее можно через {m} мин." data-limit="Вы уже отправили 3 сообщения сегодня. Мы ответим на email – попробуйте завтра.">
 <input type="hidden" name="_subject" value="Klinger Scan – Support (ru)">
 <input type="hidden" name="language" value="ru">
 <input type="hidden" name="_template" value="table">
@@ -176,11 +176,27 @@ document.documentElement.classList.add('js');
 <footer>© 2026 Klinger Scan</footer>
 </div>
 <script>
+var COOLDOWN=10*60*1000, MAX_PER_DAY=3, DAY=24*60*60*1000, KEY='supportSent';
+// Times of messages sent from this browser in the last 24 h. Storage may be blocked: then no limit.
+function readSent(){try{var a=JSON.parse(localStorage.getItem(KEY)||'[]');var now=Date.now();return a.filter(function(t){return typeof t==='number'&&now-t<DAY;});}catch(e){return [];}}
+function writeSent(a){try{localStorage.setItem(KEY,JSON.stringify(a));}catch(e){}}
 document.querySelectorAll('form.support').forEach(function(form){
   var status=form.querySelector('.status'), button=form.querySelector('button[type=submit]'), label=button.textContent;
+  var openedAt=Date.now();
   form.addEventListener('submit',function(e){
     e.preventDefault();
     if(form._honey && form._honey.value) return;
+    // Bots fill forms instantly: drop anything sent within 3 s of opening the page.
+    if(Date.now()-openedAt<3000) return;
+    // Per-browser limit: one message per 10 min, at most 3 per 24 h.
+    var sent=readSent(), now=Date.now();
+    if(sent.length>=MAX_PER_DAY){status.className='status err';status.textContent=form.dataset.limit;return;}
+    var last=sent.length?sent[sent.length-1]:0;
+    if(now-last<COOLDOWN){
+      status.className='status err';
+      status.textContent=form.dataset.wait.replace('{m}',Math.ceil((COOLDOWN-(now-last))/60000));
+      return;
+    }
     var data={};
     new FormData(form).forEach(function(v,k){data[k]=v});
     data._replyto=data.email;
@@ -188,7 +204,7 @@ document.querySelectorAll('form.support').forEach(function(form){
     status.className='status'; status.textContent='';
     fetch('https://formsubmit.co/ajax/cernicukmaks00@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
       .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)!=='true'){var e=new Error(j.message||r.status);e.server=j.message;throw e;}})})
-      .then(function(){status.className='status ok';status.textContent=form.dataset.ok;form.reset();})
+      .then(function(){status.className='status ok';status.textContent=form.dataset.ok;form.reset();writeSent(readSent().concat(Date.now()));})
       .catch(function(e){
         // A reply from the service (e.g. form not activated yet) is not a connection problem: show its reason.
         status.className='status err';
