@@ -1,6 +1,6 @@
-# Klinger Scan
+# Klingel Scan
 
-Public pages for the Klinger Scan iOS app.
+Public pages for the Klingel Scan iOS app.
 
 - https://max64523.github.io/klinger-scan/privacy
 - https://max64523.github.io/klinger-scan/terms
